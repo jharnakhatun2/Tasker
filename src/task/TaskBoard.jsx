@@ -49,6 +49,10 @@ export default function TaskBoard() {
     const taskListAfterDelete = tasks.filter((task) => task.id !== taskId);
     setTasks(taskListAfterDelete);
   };
+  const handleDeleteTasks = () => {
+    tasks.length = 0;
+    setTasks([...tasks]);
+  };
   return (
     <>
       {/* Begin Table */}
@@ -67,7 +71,10 @@ export default function TaskBoard() {
           </div>
           {/* Search Box Ends */}
           <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
-            <TaskAction onAddTask={() => setShowAddModal(true)} />
+            <TaskAction
+              onAddTask={() => setShowAddModal(true)}
+              onDeleteTasks={handleDeleteTasks}
+            />
             <TaskList
               tasks={tasks}
               onEditTask={handleEditTask}
