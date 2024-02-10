@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AddTaskModal from "./AddTaskModal";
+import NoTaskList from "./NoTaskList";
 import SearchTask from "./SearchTask";
 import TaskAction from "./TaskAction";
 import TaskList from "./TaskList";
@@ -88,12 +89,16 @@ export default function TaskBoard() {
               onAddTask={() => setShowAddModal(true)}
               onDeleteTasks={handleDeleteTasks}
             />
-            <TaskList
-              tasks={tasks}
-              onEditTask={handleEditTask}
-              onDeleteTask={handleDeleteSingleTask}
-              onFav={handleFavToggle}
-            />
+            {tasks.length > 0 ? (
+              <TaskList
+                tasks={tasks}
+                onEditTask={handleEditTask}
+                onDeleteTask={handleDeleteSingleTask}
+                onFav={handleFavToggle}
+              />
+            ) : (
+              <NoTaskList />
+            )}
           </div>
         </div>
       </section>
