@@ -1,3 +1,4 @@
+import Logo from "./assets/lws-logo-en.svg";
 export default function Header() {
   return (
     <>
@@ -6,11 +7,7 @@ export default function Header() {
         <div className="container mx-auto flex items-center justify-between gap-x-6">
           {/* Logo */}
           <a href="/">
-            <img
-              className="h-[45px]"
-              src="/src/assets/lws-logo-en.svg"
-              alt="Lws"
-            />
+            <img className="h-[45px]" src={Logo} alt="Lws" />
           </a>
           {/* Logo Ends */}
         </div>
