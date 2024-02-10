@@ -59,6 +59,13 @@ export default function TaskBoard() {
     newTask[taskIndex].isFavorite = !newTask[taskIndex].isFavorite;
     setTasks(newTask);
   };
+  const handleSearchTask = (searchTask) => {
+    const findSearch = tasks.filter((task) =>
+      task.title.toLowerCase().includes(searchTask.toLowerCase())
+    );
+    setTasks([...findSearch]);
+  };
+
   return (
     <>
       {/* Begin Table */}
@@ -73,7 +80,7 @@ export default function TaskBoard() {
         <div className="container">
           {/* Search Box */}
           <div className="p-2 flex justify-end">
-            <SearchTask />
+            <SearchTask onSearch={handleSearchTask} />
           </div>
           {/* Search Box Ends */}
           <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
